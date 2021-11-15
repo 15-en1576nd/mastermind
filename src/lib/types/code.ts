@@ -1,1 +1,1 @@
-export type Code = number[]
+export type Code = number[];
