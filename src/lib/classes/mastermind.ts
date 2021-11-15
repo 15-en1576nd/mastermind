@@ -1,4 +1,4 @@
-type Code = number[]
+import type { Code } from "$lib/types/code";
 
 export default class Mastermind {
   code: Code;
