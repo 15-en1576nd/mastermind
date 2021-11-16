@@ -16,6 +16,10 @@ export default class MastermindGame {
 	}
 
 	checkGuess(guess) {
+		if (this.gameOver) {
+			throw new Error('Game is over');
+		}
+
 		let exact = 0;
 		let near = 0;
 		const code = this.code;
@@ -26,6 +30,15 @@ export default class MastermindGame {
 				near++;
 			}
 		}
+
+		if (exact === 4) {
+			this.gameOver = true;
+		}
+
+		if (this.guessCount === this.maxGuesses) {
+			this.gameOver = true;
+		}
+
 		return { exact, near };
 	}
 }
