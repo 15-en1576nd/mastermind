@@ -18,10 +18,7 @@ export default class SingleplayerMastermindGame
 
 	guess(guess: Code): void {
 		this.guessCount++;
-		const { exact, near } = this.checkGuess(guess);
+		this.checkGuess(guess);
 		this.guesses.push(guess);
-		if (exact === 4) {
-			this.gameOver = true;
-		}
 	}
 }
