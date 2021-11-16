@@ -11,7 +11,9 @@ export default class SingleplayerMastermindGame
 		for (let i = 0; i < codeLength; i++) {
 			code.push(Math.floor(Math.random() * 8) as CodeDigit);
 		}
-		super(code, 10);
+		// Call the parent constructor with the code
+		// and a maximum guess count of 12
+		super(code, 12);
 	}
 
 	guess(guess: Code): void {
