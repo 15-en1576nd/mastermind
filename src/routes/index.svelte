@@ -4,6 +4,8 @@
 	import GameBoard from '../components/gameBoard.svelte';
 	import DifficultySlider from '../components/difficultySlider.svelte';
 	import Instructions from '../components/instructions.svelte';
+	import SvelteSeo from "svelte-seo";
+
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
@@ -11,6 +13,11 @@
 	}
 	let difficulty = 0;
 </script>
+
+<SvelteSeo
+	title="Mastermind"
+  description="An advanced version of mastermind implemented by Daneric & Marnix"
+/>
 
 {#if $game}
 	<p>{JSON.stringify($game)}</p>
