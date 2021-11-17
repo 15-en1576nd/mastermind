@@ -3,6 +3,7 @@ import type { Code } from '$lib/types/code';
 export default class MastermindGame {
 	code: Code;
 	guesses: Code[];
+	rows: Code[];
 	guessCount: number;
 	gameOver: boolean;
 	maxGuesses: number;
@@ -10,9 +11,15 @@ export default class MastermindGame {
 	constructor(code: Code, maxGuesses: number) {
 		this.code = code;
 		this.guesses = [];
+		this.rows = [];
 		this.guessCount = 0;
 		this.gameOver = false;
 		this.maxGuesses = maxGuesses;
+
+		const emptyRow: Code = code.map(() => 8);
+		for (let i = 0; i < maxGuesses; i++) {
+			this.rows.push([...emptyRow]);
+		}
 	}
 
 	checkGuess(guess) {

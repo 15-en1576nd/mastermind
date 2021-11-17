@@ -1,22 +1,20 @@
 <script lang="ts">
-	import type PlayableMastermindGame from '$lib/classes/playableMastermindGame';
+	import { game } from '$lib/stores';
 	import SingleplayerMastermindGame from '$lib/classes/singeplayerMastermindGame';
-	import type { Code } from '$lib/types/code';
+	import GameBoard from '../components/gameBoard.svelte';
 	import DifficultySlider from '../components/difficultySlider.svelte';
 	import Instructions from '../components/instructions.svelte';
-	let game: PlayableMastermindGame;
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
-		game = new SingleplayerMastermindGame(numberOfRows);
+		game.set(new SingleplayerMastermindGame(numberOfRows));
 	}
 	let difficulty = 0;
-	let guessText = '';
-	$: guess = guessText.split(',').map(parseInt) as Code;
 </script>
 
-{#if game}
-	<p>{JSON.stringify(game)}</p>
+{#if $game}
+	<p>{JSON.stringify($game)}</p>
+	<GameBoard />
 	<label>Guess</label>
 	<input placeholder="1,1,1,1" />
 	<label>Difficulty</label>
