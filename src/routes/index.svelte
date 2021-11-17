@@ -6,7 +6,6 @@
 	import Instructions from '../components/instructions.svelte';
 	import SvelteSeo from "svelte-seo";
 
-
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
 		game.set(new SingleplayerMastermindGame(numberOfRows));
