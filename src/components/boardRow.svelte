@@ -3,20 +3,21 @@
 	import EmojiSlot from './emojiSlot.svelte';
 	import Emoji from './emoji.svelte';
 	import { game, selectedEmoji } from '$lib/stores';
+import SidebarHints from './sidebarHints.svelte';
 
 	export let rowIndex: number;
 	export let disabled: boolean;
 </script>
 
 <div style={`grid-template-columns: repeat(${$game.rows.length}, 1fr);`}>
-	{#each $game.rows[rowIndex] as column, columnIndex}
+	{#each $game.rows[rowIndex].code as column, columnIndex}
 		<button
 			{disabled}
 			on:click={() => {
 				if (disabled) return;
 				game.update((cgame) => {
 					//@ts-ignore
-					cgame.rows[rowIndex][columnIndex] = $selectedEmoji;
+					cgame.rows[rowIndex].code[columnIndex] = $selectedEmoji;
 					return cgame;
 				});
 			}}
@@ -28,6 +29,7 @@
 			</EmojiSlot>
 		</button>
 	{/each}
+  <SidebarHints balls={$game.rows[rowIndex].balls} />
 </div>
 
 <style>

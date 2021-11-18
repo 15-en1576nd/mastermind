@@ -15,10 +15,4 @@ export default class SingleplayerMastermindGame
 		// and a maximum guess count of 12
 		super(code, 12);
 	}
-
-	guess(guess: Code): void {
-		this.guessCount++;
-		this.checkGuess(guess);
-		this.guesses.push(guess);
-	}
 }
