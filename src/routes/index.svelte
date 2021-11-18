@@ -4,7 +4,8 @@
 	import GameBoard from '../components/gameBoard.svelte';
 	import DifficultySlider from '../components/difficultySlider.svelte';
 	import Instructions from '../components/instructions.svelte';
-  import SvelteSeo from "svelte-seo";
+  	import SvelteSeo from "svelte-seo";
+	import SubmitButton from '../components/submitButton.svelte';
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
@@ -23,6 +24,7 @@
 	<label>Guess</label>
 	<input placeholder="1,1,1,1" />
 	<label>Difficulty</label>
+	<SubmitButton />
 {:else}
 	<Instructions />
 	<DifficultySlider bind:value={difficulty} />
