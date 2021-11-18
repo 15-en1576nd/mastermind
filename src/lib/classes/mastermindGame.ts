@@ -51,7 +51,7 @@ export default class MastermindGame {
 			this.rows[rowIndex].balls[i] = Ball.NEAR;
 		}
 
-		if (exact === 4) {
+		if (exact === this.code.length) {
 			this.gameOver = true;
 		}
 
