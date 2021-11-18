@@ -1,9 +1,11 @@
+import Ball from '$lib/enums/ball';
 import type { Code } from '$lib/types/code';
+import type Row from '$lib/types/row';
 
 export default class MastermindGame {
 	code: Code;
 	guesses: Code[];
-	rows: Code[];
+	rows: Row[];
 	guessCount: number;
 	gameOver: boolean;
 	maxGuesses: number;
@@ -16,26 +18,37 @@ export default class MastermindGame {
 		this.gameOver = false;
 		this.maxGuesses = maxGuesses;
 
-		const emptyRow: Code = code.map(() => 8);
+		const emptyRow: Row = {
+			code: code.map(() => 8),
+			balls: code.map(() => Ball.EMPTY)
+		};
 		for (let i = 0; i < maxGuesses; i++) {
-			this.rows.push([...emptyRow]);
+			this.rows.push({ code: [...emptyRow.code], balls: [...emptyRow.balls] });
 		}
 	}
 
-	checkGuess(guess) {
+	guess(guess: Code) {
 		if (this.gameOver) {
 			throw new Error('Game is over');
 		}
 
 		let exact = 0;
 		let near = 0;
-		const code = this.code;
-		for (let i = 0; i < 4; i++) {
-			if (guess[i] === code[i]) {
+		for (let i = 0; i < guess.length; i++) {
+			if (guess[i] === this.code[i]) {
 				exact++;
-			} else if (code.includes(guess[i])) {
+			} else if (this.code.includes(guess[i])) {
 				near++;
 			}
+		}
+
+		const rowIndex = this.maxGuesses - this.guessCount - 1;
+
+		for (let i = 0; i < exact; i++) {
+			this.rows[rowIndex].balls[i] = Ball.EXACT;
+		}
+		for (let i = exact; i < exact + near; i++) {
+			this.rows[rowIndex].balls[i] = Ball.NEAR;
 		}
 
 		if (exact === 4) {
@@ -46,6 +59,7 @@ export default class MastermindGame {
 			this.gameOver = true;
 		}
 
-		return { exact, near };
+		this.guessCount++;
+		this.guesses.push(guess);
 	}
 }

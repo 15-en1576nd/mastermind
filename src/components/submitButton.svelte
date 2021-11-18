@@ -7,7 +7,7 @@ import { game } from "$lib/stores";
 
 <button on:click={
     () => {
-        $game.guess($game.rows[currentIndex]);
+        $game.guess($game.rows[currentIndex].code);
         game.set($game)
     }
 }>Guess</button>
