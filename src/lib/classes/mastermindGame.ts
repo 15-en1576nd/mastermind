@@ -51,15 +51,16 @@ export default class MastermindGame {
 			this.rows[rowIndex].balls[i] = Ball.NEAR;
 		}
 
-		if (exact === 4) {
+		if (exact === this.code.length) {
 			this.gameOver = true;
 		}
+
+		this.guessCount++;
 
 		if (this.guessCount === this.maxGuesses) {
 			this.gameOver = true;
 		}
 
-		this.guessCount++;
 		this.guesses.push(guess);
 	}
 }
