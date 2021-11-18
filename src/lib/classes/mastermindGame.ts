@@ -55,11 +55,12 @@ export default class MastermindGame {
 			this.gameOver = true;
 		}
 
+		this.guessCount++;
+
 		if (this.guessCount === this.maxGuesses) {
 			this.gameOver = true;
 		}
 
-		this.guessCount++;
 		this.guesses.push(guess);
 	}
 }
