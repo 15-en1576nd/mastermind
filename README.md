@@ -1,7 +1,7 @@
 # Mastermind
 
 This is a school project in which we recreate the classic
-game of mastermind in 3d
+game of mastermind
 
 ## Stack
 
