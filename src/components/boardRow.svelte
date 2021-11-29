@@ -9,7 +9,7 @@ import SidebarHints from './sidebarHints.svelte';
 	export let disabled: boolean;
 </script>
 
-<div style={`grid-template-columns: repeat(${$game.rows.length}, 1fr);`}>
+<div style={`grid-template-columns: repeat(${$game.code.length+1}, 1fr);`}>
 	{#each $game.rows[rowIndex].code as column, columnIndex}
 		<button
 			{disabled}
@@ -22,7 +22,7 @@ import SidebarHints from './sidebarHints.svelte';
 				});
 			}}
 		>
-			<EmojiSlot>
+			<EmojiSlot active={$game.maxGuesses - $game.guessCount -1 === rowIndex}>
 				{#if column !== 8}
 					<Emoji emoji={emojiMap[column]} />
 				{/if}

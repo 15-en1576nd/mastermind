@@ -8,11 +8,9 @@
 	const clickHandler = (emojiIndex: number) => selectedEmoji.set(emojiIndex as CodeDigit);
 </script>
 
-Hey
 <div class="flex">
-	<p>{$selectedEmoji}</p>
 	{#each { length: 8 } as _, i}
-		<EmojiSlot>
+		<EmojiSlot active={$selectedEmoji===i}>
 			<button on:click={() => clickHandler(i)}>
 				<Emoji emoji={emojiMap[i]} />
 			</button>
