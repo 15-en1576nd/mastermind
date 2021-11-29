@@ -7,6 +7,7 @@ import Button from './button.svelte';
 
 <Button
 	class="bg-blue-500 min-w-sm my-2"
+	disabled={$game.gameOver}
 	on:click={() => {
 		if ($game.gameOver) return;
 		$game.guess($game.rows[currentIndex].code);
