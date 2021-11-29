@@ -1,4 +1,3 @@
-<h1>Mastermind instructions</h1>
 <p>
 	The game is played with two players. The first player is the "mastermind" and the second player is
 	the "guesser". The mastermind chooses a secret code consisting of four to eight emojis(depending
