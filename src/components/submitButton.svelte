@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { game } from '$lib/stores';
-import Button from './button.svelte';
+	import Button from './button.svelte';
 
 	$: currentIndex = $game.maxGuesses - $game.guessCount - 1;
 </script>
@@ -12,4 +12,5 @@ import Button from './button.svelte';
 		if ($game.gameOver) return;
 		$game.guess($game.rows[currentIndex].code);
 		game.set($game);
-	}}>Guess</Button>
+	}}>Guess</Button
+>
