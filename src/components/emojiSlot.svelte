@@ -1,4 +1,8 @@
-<div class="slot">
+<script lang="ts">
+    export let active = false;
+</script>
+
+<div class={`slot ${active ? 'bg-gray-200' : ''}`}>
     <slot></slot>
 </div>
 
@@ -11,8 +15,6 @@
 		border: 1px solid #474554;
 		border-radius: 2px;
         justify-content: center;
-        background-color: #ACA7CB;
-		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		margin: 0 0 1em 0;
     }
 </style>

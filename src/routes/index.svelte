@@ -4,7 +4,7 @@
 	import GameBoard from '../components/gameBoard.svelte';
 	import DifficultyPicker from '../components/difficultyPicker.svelte';
 	import Instructions from '../components/instructions.svelte';
-	import SvelteSeo from "svelte-seo";
+	import SvelteSeo from 'svelte-seo';
 	import SubmitButton from '../components/submitButton.svelte';
 	import EmojiPicker from '../components/emojiPicker.svelte';
 	import Button from '../components/button.svelte';
@@ -21,28 +21,23 @@
 	description="An advanced mastermind implementation written by Daneric & Marnix"
 />
 {#if $game}
-<div class="bg-white mt-2 rounded-md mx-auto py-3 px-5 max-w-min">
-
-	<GameBoard />
-	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label>Guess</label>
-	<input placeholder="1,1,1,1" />
-	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label>Difficulty</label>
-	<SubmitButton />
-	<EmojiPicker />
-</div>
+	<div>
+		<div class="bg-white mt-2 rounded-md mx-auto py-3 px-5 max-w-min">
+			<GameBoard />
+			<EmojiPicker />
+		</div>
+		<div class="mx-auto max-w-min">
+			<SubmitButton />
+		</div>
+	</div>
 {:else}
-
 	<div class="mx-auto max-w-max my-5">
 		<h1 class="text-6xl text-gray-800">EmojiMind</h1>
 	</div>
 	<div class="mx-auto max-w-max my-5">
-		<Button class="bg-blue-500 min-w-sm" on:click={startGame}>PLAY {
-			difficulty === 0 ? 'EASY' :
-			difficulty === 1 ? 'MEDIUM' :
-			'HARD'
-		}</Button>
+		<Button class="bg-blue-500 min-w-sm" on:click={startGame}
+			>PLAY {difficulty === 0 ? 'EASY' : difficulty === 1 ? 'MEDIUM' : 'HARD'}</Button
+		>
 	</div>
 	<div class="max-w-sm mx-auto my-5">
 		<DifficultyPicker bind:value={difficulty} />
@@ -52,5 +47,3 @@
 		<Instructions />
 	</div>
 {/if}
-
-
