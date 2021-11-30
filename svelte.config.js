@@ -1,5 +1,7 @@
 import preprocess from 'svelte-preprocess';
-import adapter from '@sveltejs/adapter-node';
+import nodeAdapter from '@sveltejs/adapter-node';
+import multiAdapter from '@macfja/svelte-multi-adapter';
+import netlifyAdapter from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,14 +17,17 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 
-		adapter: adapter({
-			out: 'build',
-			precompress: false,
-			env: {
-				host: 'HOST',
-				port: 'PORT'
-			}
-		})
+		adapter: multiAdapter([
+			nodeAdapter({
+				out: 'dist',
+				precompress: false,
+				env: {
+					host: 'HOST',
+					port: 'PORT'
+				}
+			}),
+			netlifyAdapter({})
+		])
 	}
 };
 
