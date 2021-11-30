@@ -15,7 +15,7 @@ RUN npm run build
 FROM node:16-alpine as runner
 WORKDIR /app
 # Copy build output from builder
-COPY --from=builder /app/build/ /app/build/
+COPY --from=builder /app/dist/ /app/build/
 
 # Install production dependencies
 COPY package.json package-lock.json ./
