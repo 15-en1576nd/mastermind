@@ -7,7 +7,7 @@
 <button
 	on:click
 	{disabled}
-	class={`rounded-full p-3 text-white cursor-pointer disabled:bg-gray-500 disabled:cursor-not-allowed ${clazz}`}
+	class={`rounded-full p-3 text-white cursor-pointer shadow-xl disabled:bg-gray-500 disabled:cursor-not-allowed ${clazz}`}
 >
 	<slot />
 </button>
