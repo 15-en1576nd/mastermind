@@ -42,7 +42,7 @@
 	<div class="max-w-sm mx-auto my-5">
 		<DifficultyPicker bind:value={difficulty} />
 	</div>
-	<div class="bg-white mt-2 rounded-md mx-auto py-3 px-5 w-full md:max-w-xl border-2 border-gray-800">
+	<div class="bg-white mt-2 rounded-md mx-auto py-3 px-5 w-full md:max-w-xl shadow-xl">
 		<h2 class="text-2xl text-gray-800 text-center w-full">Mastermind instructions</h2>
 		<Instructions />
 	</div>
