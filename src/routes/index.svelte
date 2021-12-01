@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { game } from '$lib/stores';
-	import SingleplayerMastermindGame from '$lib/classes/singeplayerMastermindGame';
 	import GameBoard from '../components/gameBoard.svelte';
 	import DifficultyPicker from '../components/difficultyPicker.svelte';
 	import Instructions from '../components/instructions.svelte';
@@ -8,12 +7,11 @@
 	import SubmitButton from '../components/submitButton.svelte';
 	import EmojiPicker from '../components/emojiPicker.svelte';
 	import Button from '../components/button.svelte';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/env';
+import MastermindGame from '$lib/classes/mastermindGame';
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
-		game.set(new SingleplayerMastermindGame(numberOfRows));
+		game.set(new MastermindGame(numberOfRows));
 	}
 	let difficulty = 0;
 </script>

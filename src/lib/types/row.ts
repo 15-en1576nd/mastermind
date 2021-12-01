@@ -1,9 +1,9 @@
-import type Ball from '$lib/enums/ball';
+import type Hint from '$lib/enums/hint';
 import type { Code } from './code';
 
 interface Row {
 	code: Code;
-	balls: Ball[];
+	hints: Hint[];
 }
 
 export default Row;
