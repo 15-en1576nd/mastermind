@@ -17,7 +17,7 @@
 </script>
 
 <SvelteSeo
-	title="Mastermind"
+	title="MojiMind"
 	description="An advanced mastermind implementation written by Daneric & Marnix"
 />
 {#if $game}
@@ -32,7 +32,7 @@
 	</div>
 {:else}
 	<div class="mx-auto max-w-max my-5">
-		<h1 class="text-6xl text-gray-800">EmojiMind</h1>
+		<h1 class="text-6xl text-gray-800">MojiMind</h1>
 	</div>
 	<div class="mx-auto max-w-max my-5">
 		<Button class="bg-blue-500 min-w-sm" on:click={startGame}
@@ -43,7 +43,7 @@
 		<DifficultyPicker bind:value={difficulty} />
 	</div>
 	<div class="bg-white mt-2 rounded-md mx-auto py-3 px-5 w-full md:max-w-xl shadow-xl">
-		<h2 class="text-2xl text-gray-800 text-center w-full">Mastermind instructions</h2>
+		<h2 class="text-2xl text-gray-800 text-center w-full">Instructions</h2>
 		<Instructions />
 	</div>
 {/if}
