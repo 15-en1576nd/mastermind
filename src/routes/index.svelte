@@ -8,6 +8,8 @@
 	import SubmitButton from '../components/submitButton.svelte';
 	import EmojiPicker from '../components/emojiPicker.svelte';
 	import Button from '../components/button.svelte';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/env';
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
