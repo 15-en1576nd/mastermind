@@ -7,7 +7,7 @@
 	import SubmitButton from '../components/submitButton.svelte';
 	import EmojiPicker from '../components/emojiPicker.svelte';
 	import Button from '../components/button.svelte';
-import MastermindGame from '$lib/classes/mastermindGame';
+	import MastermindGame from '$lib/classes/mastermindGame';
 
 	function startGame() {
 		let numberOfRows = 4 + difficulty;
