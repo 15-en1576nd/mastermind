@@ -1,7 +1,8 @@
-import Ball from '$lib/enums/ball';
-import type { Code } from '$lib/types/code';
+import Hint from '$lib/enums/hint';
+import type { Code, CodeDigit } from '$lib/types/code';
 import type Row from '$lib/types/row';
 
+// Each game is an instance of this class
 export default class MastermindGame {
 	code: Code;
 	guesses: Code[];
@@ -10,20 +11,38 @@ export default class MastermindGame {
 	gameOver: boolean;
 	maxGuesses: number;
 
-	constructor(code: Code, maxGuesses: number) {
-		this.code = code;
+	constructor(gameOrHumberOfRows: MastermindGame | number) {
+		const game = gameOrHumberOfRows as MastermindGame;
+		const numberOfRows = gameOrHumberOfRows as number;
+
+		if (typeof game !== 'number') {
+			this.code = game.code;
+			this.guesses = game.guesses;
+			this.rows = game.rows;
+			this.guessCount = game.guessCount;
+			this.gameOver = game.gameOver;
+			this.maxGuesses = game.maxGuesses;
+			return;
+		}
+		this.code = [];
 		this.guesses = [];
 		this.rows = [];
 		this.guessCount = 0;
 		this.gameOver = false;
-		this.maxGuesses = maxGuesses;
+		this.maxGuesses = 12;
+
+		// Generate a random code of specified length
+		for (let i = 0; i < numberOfRows; i++) {
+			this.code.push(Math.floor(Math.random() * 8) as CodeDigit);
+		}
 
 		const emptyRow: Row = {
-			code: code.map(() => 8),
-			balls: code.map(() => Ball.EMPTY)
+			code: this.code.map(() => 8),
+			hints: this.code.map(() => Hint.EMPTY)
 		};
-		for (let i = 0; i < maxGuesses; i++) {
-			this.rows.push({ code: [...emptyRow.code], balls: [...emptyRow.balls] });
+
+		for (let i = 0; i < this.maxGuesses; i++) {
+			this.rows.push({ code: [...emptyRow.code], hints: [...emptyRow.hints] });
 		}
 	}
 
@@ -45,10 +64,10 @@ export default class MastermindGame {
 		const rowIndex = this.maxGuesses - this.guessCount - 1;
 
 		for (let i = 0; i < exact; i++) {
-			this.rows[rowIndex].balls[i] = Ball.EXACT;
+			this.rows[rowIndex].hints[i] = Hint.EXACT;
 		}
 		for (let i = exact; i < exact + near; i++) {
-			this.rows[rowIndex].balls[i] = Ball.NEAR;
+			this.rows[rowIndex].hints[i] = Hint.NEAR;
 		}
 
 		if (exact === this.code.length) {

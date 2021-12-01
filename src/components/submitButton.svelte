@@ -11,6 +11,7 @@
 	on:click={() => {
 		if ($game.gameOver) return;
 		$game.guess($game.rows[currentIndex].code);
+		// Make svelte refresh the UI
 		game.set($game);
 	}}>Guess</Button
 >

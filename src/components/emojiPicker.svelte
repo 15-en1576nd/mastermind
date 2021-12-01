@@ -10,7 +10,8 @@
 
 <div class="flex">
 	{#each { length: 8 } as _, i}
-		<EmojiSlot active={$selectedEmoji===i}>
+		<!-- We set this to active whenever it is selected to give the user feedback -->
+		<EmojiSlot active={$selectedEmoji === i}>
 			<button on:click={() => clickHandler(i)}>
 				<Emoji emoji={emojiMap[i]} />
 			</button>

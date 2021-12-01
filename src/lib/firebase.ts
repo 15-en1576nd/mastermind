@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+// Export the functions you want to use in the UI
 export { GoogleAuthProvider } from 'firebase/auth';
 export { browserLocalPersistence, setPersistence, getAuth, signInWithPopup } from 'firebase/auth';
 
