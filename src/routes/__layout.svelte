@@ -1,5 +1,5 @@
 <script>
-import Bar from '../components/bar.svelte';
+	import Bar from '../components/bar.svelte';
 
 	import '../app.css';
 </script>

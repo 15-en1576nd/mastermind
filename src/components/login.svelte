@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import { onMount } from 'svelte';
-  import { user as userStore } from '$lib/stores';
+	import { user as userStore } from '$lib/stores';
 
 	let signin = () => {};
 
@@ -19,15 +19,14 @@
 		const auth = getAuth();
 		setPersistence(auth, browserLocalPersistence);
 
-    auth.onAuthStateChanged((user) => {
-      userStore.set(user);
-    });
+		auth.onAuthStateChanged((user) => {
+			userStore.set(user);
+		});
 
 		signin = () =>
-			signInWithPopup(auth, provider)
-				.catch((e) => {
-					alert(`Failed to sign in to ${e.email}: ${e.message}`);
-				});
+			signInWithPopup(auth, provider).catch((e) => {
+				alert(`Failed to sign in to ${e.email}: ${e.message}`);
+			});
 	});
 </script>
 
