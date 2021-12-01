@@ -4,6 +4,8 @@
 	export { clazz as class };
 </script>
 
+<!-- The reason we add on:click is so that you can use on:click
+when using this Button component -->
 <button
 	on:click
 	{disabled}

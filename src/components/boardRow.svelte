@@ -29,7 +29,7 @@ import SidebarHints from './sidebarHints.svelte';
 			</EmojiSlot>
 		</button>
 	{/each}
-  <SidebarHints balls={$game.rows[rowIndex].balls} />
+  <SidebarHints hints={$game.rows[rowIndex].hints} />
 </div>
 
 <style>
